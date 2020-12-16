@@ -1,6 +1,9 @@
 from sqlalchemy.orm import relationship
 from .db import db
 
+NUM_COLUMNS = 4
+COLUMN_HEIGHT = 5
+
 class Game(db.Model):
   __tablename__ = 'games'
 
@@ -10,18 +13,21 @@ class Game(db.Model):
   moves = relationship('Move', back_populates='game', order_by='desc(Move.id)')
 
   def board(self, ):
-    column_height = [0]*4
-    board = [[None]*5 for i in range(0, 4)]
+    column_height = [0]*NUM_COLUMNS
+    board = [[None]*COLUMN_HEIGHT for i in range(0, NUM_COLUMNS)]
     for move in self.moves:
       board[move.column][column_height[move.column]] = move.player_id
       column_height[move.column] += 1
     return board
 
+  def column_exists(self, column_id):
+    if column_id < 0 or column_id > NUM_COLUMNS:
+      return False
+    return True
+
   def column_has_room(self, column_id):
-    print("Column has room", column_id)
     column_count = [move for move in self.moves if move.column == column_id]
-    print("Column has room", column_count)
-    return len(column_count) < 5
+    return len(column_count) < COLUMN_HEIGHT
 
   def to_dict(self):
     return {
