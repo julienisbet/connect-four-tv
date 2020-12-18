@@ -10,6 +10,7 @@ function NewGameForm(props){
       let {game} = await createGame(player1);
       props.setCurrentGame(game);
       props.setPlayer1(player1);
+      localStorage.setItem(`currentPlayer[${game}]`, player1);
     }
     submitForm();
   }

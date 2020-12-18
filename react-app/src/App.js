@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Redirect } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import GameBoard from './components/GameBoard'
@@ -8,6 +8,7 @@ function App() {
   const [currentGame, setCurrentGame] = useState('');
   const [player1, setPlayer1] = useState('');
   const [player2, setPlayer2] = useState('');
+
 
 	return (
 		<BrowserRouter>

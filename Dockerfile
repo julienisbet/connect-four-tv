@@ -21,12 +21,12 @@ ENV SQLALCHEMY_ECHO=True
 EXPOSE 8000
 
 WORKDIR /var/www
+
 COPY . .
-COPY --from=build-stage /react-app/build/* app/static/
+# Copy build files from build-stage into app/static
 
 # Install Python Dependencies
-RUN pip install -r requirements.txt
-RUN pip install psycopg2
+# add docker instructions
 
 # Run flask environment
 CMD gunicorn app:app
