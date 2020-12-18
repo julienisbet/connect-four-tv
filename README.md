@@ -8,7 +8,7 @@ This is the backend for the Flask React project.
 2. Install dependencies
 
    ```bash
-   pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+   pipenv install --dev
    ```
 
 3. Create a **.env** file based on the example with proper settings for your
@@ -16,9 +16,9 @@ This is the backend for the Flask React project.
 4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
 
 You'll need to add the following keys:
-  FLASK_ENV
-  DATABASE_URL
-  SECRET_KEY
+FLASK_ENV
+DATABASE_URL
+SECRET_KEY
 
 5. Get into your pipenv, initialize flask db, migrate your database, seed your database, and run your flask app
 
@@ -90,4 +90,3 @@ There is a layer in the Dockerfile that will install psycopg2 (not binary) for u
    ```
 
 9. Under Settings find "Config Vars" and add any additional/secret .env variables.
-
