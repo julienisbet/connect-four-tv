@@ -43,3 +43,8 @@ BONUS TASKS:
   - Allow users to register a game-token when they join the game and display it in all their played positions
     - [EXTRA] - create a players table, and allow users to save their tokens
   - Add background music
+  - Scoreboard
+    - record game winners in the game database
+    - add a python endpoint that fetches all the matches and ranks them by winner
+    - add a compopnent & navigation link to display game results
+ 
