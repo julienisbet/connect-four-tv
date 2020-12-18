@@ -1,7 +1,7 @@
 from sqlalchemy.orm import relationship
 from .db import db
 
-NUM_COLUMNS = 4
+NUM_ROWS = 4
 COLUMN_HEIGHT = 5
 
 class Game(db.Model):
@@ -10,11 +10,11 @@ class Game(db.Model):
   id = db.Column(db.Integer, primary_key = True)
   player1 = db.Column(db.String(40))
   player2 = db.Column(db.String(40))
-  moves = relationship('Move', back_populates='game', order_by='desc(Move.id)')
+  moves = relationship('Move', back_populates='game', order_by='asc(Move.id)')
 
   def board(self, ):
-    column_height = [0]*NUM_COLUMNS
-    board = [[None]*COLUMN_HEIGHT for i in range(0, NUM_COLUMNS)]
+    column_height = [0]*NUM_ROWS
+    board = [[None]*COLUMN_HEIGHT for i in range(0, NUM_ROWS)]
     for move in self.moves:
       board[move.column][column_height[move.column]] = move.player_id
       column_height[move.column] += 1
