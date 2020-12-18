@@ -1,14 +1,19 @@
 FROM node:12 AS build-stage
 
 WORKDIR /react-app
+
+#COPY from HOST to IMAGE
 COPY react-app/. .
 
 # You have to set this because it should be set during build time.
-ENV REACT_APP_BASE_URL=<Your REACT_APP_BASE_URL here>
+#ENV REACT_APP_BASE_URL=<Your REACT_APP_BASE_URL here>
 
 # Build our React App
 RUN npm install
+
+RUN ls
 RUN npm run build
+RUN ls build
 
 FROM python:3.8
 
