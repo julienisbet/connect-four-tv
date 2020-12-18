@@ -8,7 +8,7 @@ Rather than detailed instructions, today you will be receiving a list of TODO it
 |--------|-------------------------------------|-------------------------|----------------------------|
 | POST   | /api/game                           | {'player1': <playerId>} | Create a new game          |
 | POST   | /api/game/:id/player                | {'player2': <playerId>} | Add player2 to the game    |
-| POST   | /api/game/:id/player/:playerId/move | {'column': <columnId>   | Make a move                |
+| POST   | /api/game/:id/player/:playerId/move | {'column': <columnId> } | Make a move                |
 | GET    | /api/game/:id                       |                         | Retrieve current game data |
 
 ## TODO:
@@ -57,4 +57,4 @@ BONUS TASKS:
     - record game winners in the game database
     - add a python endpoint that fetches all the matches and ranks them by winner
     - add a compopnent & navigation link to display game results
- 
+  - Replace the flask application with your own (without looking at the provided code) 

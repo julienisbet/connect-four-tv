@@ -35,7 +35,7 @@ def make_move(game_id, player_id):
   moves = game.moves
   column_id = request.get_json().get('column')
   if moves:
-    latest_move = list(moves)[0]
+    latest_move = list(moves)[-1]
     if latest_move.player_id != player_id:
       if not game.column_exists(column_id):
         return {"error": f"Column {column_id} doesn't exists, {player_id}"}

@@ -5,16 +5,13 @@ import './GameBoard.css'
 
 function GameBoard(props) {
   const [grid, setGrid] = useState([[null, null, null, null, null], [null, null, null, null, null], [null, null, null, null, null], [null, null, null, null, null]]);
-  const [currentPlayer, setCurrentPlayer] = useState();
   const { gameId } = useParams();
 
-  // Retrieve the current player from localStorage
   useEffect(function () {
-    const currentPlayer = localStorage.getItem(`currentPlayer[${gameId}]`)
-    if (currentPlayer) {
-      setCurrentPlayer(currentPlayer);
+    if (localStorage.getItem(`currentPlayer[${gameId}]`)) {
+      props.setCurrentPlayer(localStorage.getItem(`currentPlayer[${gameId}]`));
     }
-  }, [gameId]);
+  }, []);
 
   // update game board
   useEffect(function () {
@@ -25,6 +22,7 @@ function GameBoard(props) {
       props.setPlayer2(game.player2);
     }
     const intervalHandler = setInterval(() => getGameUpdates(), 1000);
+
     return () => clearInterval(intervalHandler);
   }, [props, gameId]);
 
@@ -33,7 +31,8 @@ function GameBoard(props) {
   }
 
   function otherPlayer() {
-    if (props.player1 === currentPlayer) {
+    if (!props.currentPlayer) return '';
+    if (props.player1 === props.currentPlayer) {
       if (props.player2) {
         return props.player2;
       } else {
@@ -42,12 +41,11 @@ function GameBoard(props) {
     } else {
       return props.player1;
     }
-
   }
 
   return (<>
     <h3>Play The Game {gameId}</h3>
-    <b>You: {currentPlayer}</b> | 
+    <b>You: {props.currentPlayer}</b> | 
     <b>Opponent: {otherPlayer()}</b>
     <div className="game-board">
       {[0, 1, 2, 3].map((i) => buildRow(i)).reverse()}

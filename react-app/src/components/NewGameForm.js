@@ -8,9 +8,8 @@ function NewGameForm(props){
     e.preventDefault();
     async function submitForm() {
       let {game} = await createGame(player1);
-      props.setCurrentGame(game);
+      props.setCurrentGameAndPlayer(game, player1);
       props.setPlayer1(player1);
-      localStorage.setItem(`currentPlayer[${game}]`, player1);
     }
     submitForm();
   }

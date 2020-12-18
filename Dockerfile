@@ -7,9 +7,7 @@ COPY react-app/. .
 # Build our React App
 RUN npm install
 
-RUN ls
 RUN npm run build
-RUN ls build
 
 FROM python:3.8
 
@@ -23,10 +21,9 @@ EXPOSE 8000
 WORKDIR /var/www
 
 COPY . .
-# Copy build files from build-stage into app/static
+# TODO: Copy build files from build-stage into app/static
 
-# Install Python Dependencies
-# add docker instructions
+# TODO: Install Python Dependencies
 
 # Run flask environment
 CMD gunicorn app:app
