@@ -1,9 +1,10 @@
-const createGame = async (player1) => {
+export const createGame = async (player1) => {
 	const res = await fetch('/api/games', {
+		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
 		},
-		body: JSON.stringify(player1),
+		body: JSON.stringify({ player1: player1 }),
 	})
 	if (res.ok) {
 		//res coming in as {'game': game.id}
@@ -12,39 +13,40 @@ const createGame = async (player1) => {
 		console.log(res.error)
 	}
 }
-
-const addPlayer = async (gameId, player2) => {
-	const res = await fetch(`/api/games/${gameId}`, {
+export const addPlayer = async (gameId, player2) => {
+	const res = await fetch(`/api/games/${gameId}/player`, {
+		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify(player2),
 	})
 	if (res.ok) {
-		//res coming in as {'game': game.id}
+		//json coming in as {'game': game.id}
 		return await res.json()
 	} else {
 		console.log(res.error)
 	}
 }
 
-const getGame = async (gameId) => {
+export const getGame = async (gameId) => {
 	const res = await fetch(`/api/games/${gameId}`, {
 		headers: {
 			'Content-Type': 'application/json',
 		},
 	})
 
-	// res coming in as {'game': game object}
-	res.ok ? await res.json() : console.log(res.error)
+	// json coming in as {'game': game object}
+	return await res.json()
 }
 
-const makeMove = async (gameId, playerId) => {
+export const makeMove = async (gameId, playerId) => {
 	const res = await fetch(`/api/games/${gameId}/player/${playerId}`, {
+		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
 		},
-		body: JSON.stringify(player2),
+		body: JSON.stringify(playerId),
 	})
 
 	// json is either { success: true} or { error: reason}
