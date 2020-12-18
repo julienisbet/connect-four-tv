@@ -4,8 +4,6 @@ Rather than detailed instructions, today you will be receiving a list of TODO it
 
 ## API definition
 
-
-
 | method | path                                | body                    | notes                      |
 |--------|-------------------------------------|-------------------------|----------------------------|
 | POST   | /api/game                           | {'player1': <playerId>} | Create a new game          |

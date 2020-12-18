@@ -15,6 +15,11 @@ This is the backend for the Flask React project.
    development environment
 4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
 
+You'll need to add the following keys:
+  FLASK_ENV
+  DATABASE_URL
+  SECRET_KEY
+
 5. Get into your pipenv, initialize flask db, migrate your database, seed your database, and run your flask app
 
    ```bash
@@ -22,15 +27,7 @@ This is the backend for the Flask React project.
    ```
 
    ```bash
-   flask db init
-   ```
-
-   ```bash
-   flask db upgrade
-   ```
-
-   ```bash
-   flask seed all
+   python -m createdb
    ```
 
    ```bash
