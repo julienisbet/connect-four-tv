@@ -41,14 +41,5 @@ export const getGame = async (gameId) => {
 }
 
 export const makeMove = async (gameId, playerId) => {
-	const res = await fetch(`/api/games/${gameId}/player/${playerId}`, {
-    method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(playerId),
-	})
-
-	// json is either { success: true} or { error: reason}
-	return await res.json()
+  // TODO
 }
