@@ -1,8 +1,19 @@
-Let's get started!
+# Let's get started!
 
 Rather than detailed instructions, today you will be receiving a list of TODO items, and you will work to complete our Connect Four Game!
 
-TODO:
+## API definition
+
+
+
+| method | path                                | body                    | notes                      |
+|--------|-------------------------------------|-------------------------|----------------------------|
+| POST   | /api/game                           | {'player1': <playerId>} | Create a new game          |
+| POST   | /api/game/:id/player                | {'player2': <playerId>} | Add player2 to the game    |
+| POST   | /api/game/:id/player/:playerId/move | {'column': <columnId>   | Make a move                |
+| GET    | /api/game/:id                       |                         | Retrieve current game data |
+
+## TODO:
 1. Allow another player to join the game:
   - Create a "join game" form
   - Add a navigation link for your new component
@@ -17,6 +28,7 @@ POST /api/game/:id/player body: {"player2": <playerId} - add player2 to the game
   - Make sure to set the currentPlayer in localStorage
 
 2. Allow players to make moves
+  - in `gameApi` service file, add a new function to make a move, based on the API definition
   - add `onClick` handler to board cell squares
   - upon receiving a click, make a POST request.
 
