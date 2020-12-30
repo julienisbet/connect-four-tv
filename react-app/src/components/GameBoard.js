@@ -48,7 +48,7 @@ function GameBoard(props) {
     <b>You: {props.currentPlayer}</b> | 
     <b>Opponent: {otherPlayer()}</b>
     <div className="game-board">
-      {[0, 1, 2, 3].map((i) => buildRow(i)).reverse()}
+      {[0, 1, 2, 3, 4].map((i) => buildRow(i)).reverse()}
     </div>
   </>);
 }
